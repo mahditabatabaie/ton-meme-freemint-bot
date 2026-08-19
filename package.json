@@ -1,0 +1,6 @@
+{
+  "name":"ton-meme-freemint-bot","version":"0.2.0","private":true,
+  "scripts":{"dev":"tsx src/server.ts","build":"tsc","start":"node dist/server.js"},
+  "dependencies":{"dotenv":"^16.4.7","express":"^5.1.0","telegraf":"^4.16.3"},
+  "devDependencies":{"@types/express":"^5.0.1","@types/node":"^22.15.0","tsx":"^4.19.3","typescript":"^5.8.3"}
+}
