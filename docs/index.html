@@ -1,11 +1,11 @@
 <!doctype html><html lang="fa" dir="rtl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TON Meme Freemint</title>
-<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<script src="https://unpkg.com/@tonconnect/ui@3.0.2/dist/tonconnect-ui.min.js"></script>
 <style>body{font-family:system-ui;max-width:650px;margin:30px auto;padding:16px;background:#f4f4f5}main{background:#fff;border-radius:18px;padding:22px;box-shadow:0 4px 20px #0001}.muted{color:#666}.card{padding:12px;border:1px solid #ddd;border-radius:12px;margin:8px 0}button{font:inherit}</style>
 </head><body><main><h2>TON Meme Freemint</h2><p class="muted">نسخه آزمایشی امن: اتصال کیف پول بدون Seed Phrase.</p><div id="ton-connect"></div><p id="status">کیف پول متصل نیست.</p><hr><h3>Jetton Scanner</h3><button id="scan">اسکن Jettonها</button><div id="results"></div></main>
 <script>
-const ui=new TON_CONNECT_UI.TonConnectUI({manifestUrl:location.origin+'/tonconnect-manifest.json',buttonRootId:'ton-connect'});
+const ui=new TON_CONNECT_UI.TonConnectUI({manifestUrl:'https://mahditabatabaie.github.io/ton-meme-freemint-bot/tonconnect-manifest.json',buttonRootId:'ton-connect'});
 ui.onStatusChange(w=>document.getElementById('status').textContent=w?'متصل: '+w.account.address:'کیف پول متصل نیست.');
 document.getElementById('scan').onclick=async()=>{const out=document.getElementById('results');out.textContent='در حال اسکن...';try{const r=await fetch('/api/jettons');const d=await r.json();const items=d.jetton_masters||d.jetton_masters||[];out.innerHTML=items.map(x=>`<div class="card"><b>${x.jetton_content?.name||x.address||'Unknown'}</b><br><small>${x.address||''}</small><br><span class="muted">این لیست به‌تنهایی به معنی فری‌مینت یا معتبر بودن نیست.</span></div>`).join('')||'<p>موردی پیدا نشد.</p>';}catch(e){out.textContent='خطا در اسکن';}};
 </script></body></html>
